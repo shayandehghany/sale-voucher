@@ -11,7 +11,7 @@
     'license': 'LGPL-3',
     'depends': ['base',
                 'mail',
-                'contacts'
+                'contacts',
                 ],
     'data': [
 
