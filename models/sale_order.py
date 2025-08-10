@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from datetime import timedelta, date
 
 
 class SaleOrder(models.Model):
@@ -11,7 +12,6 @@ class SaleOrder(models.Model):
                                             copy=False)
     due_date = fields.Datetime(string='Due Date', default=fields.Datetime.now)
     voucher_id = fields.Many2one('sale.voucher', string='sale voucher', readonly=True, copy=False)
-
 
     def action_confirm(self):
         for order in self:
@@ -72,3 +72,45 @@ class SaleOrder(models.Model):
             'view_mode': 'form',
             'target': 'current',
         }
+
+
+@api.model
+
+
+def _run_credit_due_date_check_alternative(self):
+    config = self.env['ir.config_parameter'].sudo()
+    if not config.get_param('sale_voucher.credit_alert_active'):
+        return
+
+    default_warn_days = int(config.get_param('sale_voucher.credit_alert_days_before', 0))
+    user_id = config.get_param('sale_voucher.credit_alert_user_id')
+
+    if not user_id:
+        return
+
+    user_id = int(user_id)
+    today = date.today()
+
+    orders = self.search([('payment_type', '=', 'credit'), ('state', 'in', ['sale', 'sent'])])
+
+    for order in orders:
+        partner = order.partner_id
+        warn_days = partner.credit_warn_days or default_warn_days
+
+        warning_date = order.due_date - timedelta(days=warn_days)
+
+        if today == warning_date:
+            message = (
+                f"Due date alert for Sale Order: <a href='#' data-oe-model='sale.order' data-oe-id='{order.id}'>{order.name}</a> "
+                f"for partner '{partner.name}' in the amount {order.amount_total} {order.currency_id.symbol} "
+                f"in date {order.due_date} It is due."
+            )
+
+            self.env['mail.activity'].create({
+                'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
+                'summary': 'Payment due warning (from Sale Order)',
+                'note': message,
+                'res_id': order.id,
+                'res_model_id': self.env.ref('sale.model_sale_order').id,
+                'user_id': user_id,
+            })

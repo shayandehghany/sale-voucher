@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_credit_alert" model="ir.ui.view">
+        <field name="name">res.config.settings.form.credit.alert</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='business_documents']" position="after">
+                <div id="credit_management_settings">
+                    <h2>Credit management</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="credit_alert_active"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="credit_alert_active"/>
+                                <div class="text-muted">
+                                    Enable notifications for upcoming deadlines
+                                </div>
+                                <div class="content-group mt16" attrs="{'invisible': [('credit_alert_active', '=', False)]}">
+                                    <div class="row">
+                                        <label for="credit_alert_days_before" string="Number of warning days " class="col-lg-4 o_light_label"/>
+                                        <field name="credit_alert_days_before"/>
+                                    </div>
+                                    <div class="row mt8">
+                                        <label for="credit_alert_user_id" string="User receiving the alert" class="col-lg-4 o_light_label"/>
+                                        <field name="credit_alert_user_id" widget="many2one_avatar_user"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
