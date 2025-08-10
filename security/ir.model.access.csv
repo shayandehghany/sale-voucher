@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_credit.transaction,access.credit.transaction,model_credit_transaction,,1,1,1,1
+access_sale.voucher,access.sale.voucher,model_sale_voucher,,1,1,1,1
+access_sale.voucher.line,access.sale.voucher.line,model_sale_voucher_line,,1,1,1,1
 
