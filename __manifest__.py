@@ -23,6 +23,8 @@
         'views/credit_transaction_view.xml',
         'views/res_config_settings_view.xml',
         'views/sale_voucher_view.xml',
+        'report/sale_voucher_report.xml',
+        'report/sale_voucher_template.xml'
     ],
     'demo': [],
     'qweb': [],

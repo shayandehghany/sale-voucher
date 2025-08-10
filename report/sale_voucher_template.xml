@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_salevoucher_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" style="direction: ltr; text-align: left;">
+
+                        <h2>sale voucher ID:<span t-field="doc.name"/></h2>
+
+                        <div >
+                            <div class="col-6">
+                                <strong>Partner name:</strong> <span t-field="doc.partner_id.name"/>
+                            </div>
+
+                            <div class="col-6">
+                                <strong>Reference sales order:</strong> <span t-field="doc.sale_order_id.name"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Date: </strong> <span t-field="doc.date" t-options='{"widget": "date"}'/>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Product</th>
+                                    <th class="text-center">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.voucher_line_ids" t-as="line">
+                                    <td><span t-field="line.product_id.display_name"/></td>
+                                    <td class="text-center"><span t-field="line.quantity"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div id="credit_summary" class="row" style="margin-top: 50px; border-top: 1px solid #dee2e6; padding-top: 15px;">
+                            <div class="col-4 text-center">
+                                <strong>Credit limit</strong>
+                                <p t-field="doc.partner_id.credit_limit" t-options='{"widget": "monetary", "display_currency": doc.sale_order_id.currency_id}'/>
+                            </div>
+                            <div class="col-4 text-center">
+                                <strong>Open debit</strong>
+                                <p t-field="doc.partner_id.open_credit_debit" t-options='{"widget": "monetary", "display_currency": doc.sale_order_id.currency_id}'/>
+                            </div>
+                            <div class="col-4 text-center">
+                                <strong>Remaining credit</strong>
+                                <p><t t-esc="doc.partner_id.credit_limit - doc.partner_id.open_credit_debit" t-options='{"widget": "monetary", "display_currency": doc.sale_order_id.currency_id}'/></p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

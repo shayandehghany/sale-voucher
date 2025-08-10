@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_sale_voucher" model="ir.actions.report">
+        <field name="name">Print the sales voucher</field>
+        <field name="model">sale.voucher</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sale_voucher.report_salevoucher_template</field>
+        <field name="report_file">sale_voucher.report_salevoucher_template</field>
+        <field name="binding_model_id" ref="model_sale_voucher"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
