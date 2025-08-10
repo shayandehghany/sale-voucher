@@ -14,10 +14,11 @@
                 'contacts',
                 'sale',
                 ],
-    'data': ['views/credit_transaction_view.xml',
+    'data': ['security/ir.model.access.csv',
+             'views/credit_transaction_view.xml',
              'views/res_partner_view.xml',
              'views/sale_order_view.xml'
-    ],
+             ],
     'demo': [],
     'qweb': [],
     'installable': True,
