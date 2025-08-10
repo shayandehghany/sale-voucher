@@ -6,17 +6,18 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-
-
+                <button name="create_sale_voucher" string="create sale voucher" type="object"
+                        class="btn-primary"
+                        attrs="{'invisible': ['|', ('state', 'not in', ['sale', 'done']), ('voucher_id', '!=', False)]}"/>
 
                 <button name="action_mark_as_paid" string="Paid" type="object"
-                        class="btn-primary" />
+                        class="btn-primary"/>
             </xpath>
             <xpath expr="//div[@name='button_box']" position="inside">
-                 <button type="object" name="action_view_voucher"
-                    class="oe_stat_button"
-                    icon="fa-file-text-o"
-                    attrs="{'invisible': [('voucher_id', '=', False)]}">
+                <button type="object" name="action_view_voucher"
+                        class="oe_stat_button"
+                        icon="fa-file-text-o"
+                        attrs="{'invisible': [('voucher_id', '=', False)]}">
                     <field name="voucher_id" readonly="1" string="sale voucher"/>
                 </button>
             </xpath>

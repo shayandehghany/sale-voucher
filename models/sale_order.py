@@ -10,6 +10,8 @@ class SaleOrder(models.Model):
     credit_transaction_id = fields.Many2one('credit.transaction', string='Credit Transaction', readonly=True,
                                             copy=False)
     due_date = fields.Datetime(string='Due Date', default=fields.Datetime.now)
+    voucher_id = fields.Many2one('sale.voucher', string='sale voucher', readonly=True, copy=False)
+
 
     def action_confirm(self):
         for order in self:
@@ -32,7 +34,6 @@ class SaleOrder(models.Model):
                     'partner_id': order.partner_id.id,
                     'sale_order_id': order.id,
                     'amount': order.amount_total,
-                    'date': order.date,
                     'state': 'draft',
 
                 })
@@ -40,4 +41,34 @@ class SaleOrder(models.Model):
 
     def action_mark_as_paid(self):
         for order in self:
-            order.credit_transaction_id.write({'state':'posted'})
+            order.credit_transaction_id.write({'state': 'posted'})
+
+    def create_sale_voucher(self):
+        self.ensure_one()
+        voucher_lines = []
+        for line in self.order_line.filtered(lambda l: not l.display_type):
+            voucher_lines.append((0, 0, {
+                'product_id': line.product_id.id,
+                'quantity': line.product_uom_qty,
+            }))
+
+        voucher = self.env['sale.voucher'].create({
+            'partner_id': self.partner_id.id,
+            'sale_order_id': self.id,
+            'voucher_line_ids': voucher_lines,
+        })
+
+        self.write({'voucher_id': voucher.id})
+
+        return self.action_view_voucher()
+
+    def action_view_voucher(self):
+        self.ensure_one()
+        return {
+            'name': 'sale voucher',
+            'type': 'ir.actions.act_window',
+            'res_model': 'sale.voucher',
+            'res_id': self.voucher_id.id,
+            'view_mode': 'form',
+            'target': 'current',
+        }
