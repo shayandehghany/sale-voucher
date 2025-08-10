@@ -4,7 +4,7 @@ from odoo import models,fields,api,_
 class CreditTransaction(models.Model):
     _name = 'credit.transaction'
     _description = 'Credit Transaction'
-    _order = 'date desc'
+    _order = 'date desc , id desc'
 
     partner_id = fields.Many2one('res.partner', string='Partner' , required=True,index=True)
     sale_order_id = fields.Many2one('sale.order', string='Sales Order', readonly=True)

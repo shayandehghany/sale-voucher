@@ -13,13 +13,19 @@ class SaleOrder(models.Model):
     due_date = fields.Datetime(string='Due Date', default=fields.Datetime.now)
     voucher_id = fields.Many2one('sale.voucher', string='sale voucher', readonly=True, copy=False)
 
+    def action_cancel(self):
+        for order in self:
+            if order.credit_transaction_id:
+                order.credit_transaction_id.unlink()
+        return super().action_cancel()
+
     def action_confirm(self):
         for order in self:
             if order.payment_type == 'credit':
                 credit_transaction = self.env['credit.transaction']
-                total_open_credit = credit_transaction.search(
-                    [('state', '=', 'draft'), ('partner_id', '=', self.partner_id.id)])
-                total_open_credit_amount = sum(total_open_credit.mapped('amount'))
+                # total_open_credit = credit_transaction.search(
+                #     [('state', '=', 'draft'), ('partner_id', '=', self.partner_id.id)])
+                total_open_credit_amount = order.partner_id.open_credit_debit
                 partner_credit_limit = order.partner_id.credit_limit
 
                 if total_open_credit_amount + order.amount_total >= partner_credit_limit:
@@ -74,43 +80,41 @@ class SaleOrder(models.Model):
         }
 
 
-@api.model
+    @api.model
+    def _run_credit_due_date_check_alternative(self):
+        config = self.env['ir.config_parameter'].sudo()
+        if not config.get_param('sale_voucher.credit_alert_active'):
+            return
 
+        default_warn_days = int(config.get_param('sale_voucher.credit_alert_days_before', 0))
+        user_id = config.get_param('sale_voucher.credit_alert_user_id')
 
-def _run_credit_due_date_check_alternative(self):
-    config = self.env['ir.config_parameter'].sudo()
-    if not config.get_param('sale_voucher.credit_alert_active'):
-        return
+        if not user_id:
+            return
 
-    default_warn_days = int(config.get_param('sale_voucher.credit_alert_days_before', 0))
-    user_id = config.get_param('sale_voucher.credit_alert_user_id')
+        user_id = int(user_id)
+        today = date.today()
 
-    if not user_id:
-        return
+        orders = self.search([('payment_type', '=', 'credit'), ('state', 'in', ['sale', 'sent'])])
 
-    user_id = int(user_id)
-    today = date.today()
+        for order in orders:
+            partner = order.partner_id
+            warn_days = partner.credit_warn_days or default_warn_days
 
-    orders = self.search([('payment_type', '=', 'credit'), ('state', 'in', ['sale', 'sent'])])
+            warning_date = order.due_date - timedelta(days=warn_days)
 
-    for order in orders:
-        partner = order.partner_id
-        warn_days = partner.credit_warn_days or default_warn_days
+            if today == warning_date:
+                message = (
+                    f"Due date alert for Sale Order: <a href='#' data-oe-model='sale.order' data-oe-id='{order.id}'>{order.name}</a> "
+                    f"for partner '{partner.name}' in the amount {order.amount_total} {order.currency_id.symbol} "
+                    f"in date {order.due_date} It is due."
+                )
 
-        warning_date = order.due_date - timedelta(days=warn_days)
-
-        if today == warning_date:
-            message = (
-                f"Due date alert for Sale Order: <a href='#' data-oe-model='sale.order' data-oe-id='{order.id}'>{order.name}</a> "
-                f"for partner '{partner.name}' in the amount {order.amount_total} {order.currency_id.symbol} "
-                f"in date {order.due_date} It is due."
-            )
-
-            self.env['mail.activity'].create({
-                'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
-                'summary': 'Payment due warning (from Sale Order)',
-                'note': message,
-                'res_id': order.id,
-                'res_model_id': self.env.ref('sale.model_sale_order').id,
-                'user_id': user_id,
-            })
+                self.env['mail.activity'].create({
+                    'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
+                    'summary': 'Payment due warning (from Sale Order)',
+                    'note': message,
+                    'res_id': order.id,
+                    'res_model_id': self.env.ref('sale.model_sale_order').id,
+                    'user_id': user_id,
+                })
