@@ -38,3 +38,6 @@ class SaleOrder(models.Model):
                 })
         return super(SaleOrder, self).action_confirm()
 
+    def action_mark_as_paid(self):
+        for order in self:
+            order.credit_transaction_id.write({'state':'posted'})

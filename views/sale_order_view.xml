@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_add_voucher_button" model="ir.ui.view">
+        <field name="name">sale.order.form.voucher.button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+
+
+
+                <button name="action_mark_as_paid" string="Paid" type="object"
+                        class="btn-primary" />
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                 <button type="object" name="action_view_voucher"
+                    class="oe_stat_button"
+                    icon="fa-file-text-o"
+                    attrs="{'invisible': [('voucher_id', '=', False)]}">
+                    <field name="voucher_id" readonly="1" string="sale voucher"/>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="payment_type"/>
+                <field name="due_date"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
+
+
+
