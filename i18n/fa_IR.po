@@ -1,0 +1,559 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_voucher
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20210204\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-10 17:46+0000\n"
+"PO-Revision-Date: 2025-08-11 11:15+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: fa\n"
+"X-Generator: Poedit 2.2\n"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.report_salevoucher_template
+msgid "<strong>Credit limit</strong>"
+msgstr "حد اعتبار"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.report_salevoucher_template
+msgid "<strong>Date: </strong>"
+msgstr "تاریخ"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.report_salevoucher_template
+msgid "<strong>Open debit</strong>"
+msgstr "بدهی باز"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.report_salevoucher_template
+msgid "<strong>Partner name:</strong>"
+msgstr "نام مشتری"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.report_salevoucher_template
+msgid "<strong>Reference sales order:</strong>"
+msgstr "سفارش فروش مرجع"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.report_salevoucher_template
+msgid "<strong>Remaining credit</strong>"
+msgstr "اعتبار باقی مانده"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_needaction
+msgid "Action Needed"
+msgstr "اقدام موردنیاز"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__activity_ids
+msgid "Activities"
+msgstr "فعالیت ها"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "فعالیت ها به استثنا دکوراتور ها"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__activity_state
+msgid "Activity State"
+msgstr "وضعیت فعالیت"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "نماد نوع فعالیت"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.report_salevoucher_template
+msgid "Amount"
+msgstr "مقدار"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_attachment_count
+msgid "Attachment Count"
+msgstr "تعداد پیوست"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_res_config_settings__credit_alert_active
+msgid "Automatic due date alert enabled"
+msgstr "هشدار خودکار تاریخ سررسید فعال شد"
+
+#. module: sale_voucher
+#: model:ir.model.fields.selection,name:sale_voucher.selection__sale_order__payment_type__cash
+msgid "Cash"
+msgstr "نقدی"
+
+#. module: sale_voucher
+#: model:ir.model,name:sale_voucher.model_res_config_settings
+msgid "Config Settings"
+msgstr "تنظیمات پیکربندی"
+
+#. module: sale_voucher
+#: model:ir.model,name:sale_voucher.model_res_partner
+msgid "Contact"
+msgstr "مخاطب"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__create_uid
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__create_uid
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher_line__create_uid
+msgid "Created by"
+msgstr "تولید شده توسط"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__create_date
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__create_date
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher_line__create_date
+msgid "Created on"
+msgstr "تولید شده در"
+
+#. module: sale_voucher
+#: model:ir.model.fields.selection,name:sale_voucher.selection__sale_order__payment_type__credit
+msgid "Credit"
+msgstr "اعتبار"
+
+#. module: sale_voucher
+#: model:ir.actions.server,name:sale_voucher.ir_cron_check_credit_due_dates_ir_actions_server
+#: model:ir.cron,cron_name:sale_voucher.ir_cron_check_credit_due_dates
+#: model:ir.cron,name:sale_voucher.ir_cron_check_credit_due_dates
+msgid "Credit Due Date: Daily Check"
+msgstr "تاریخ سررسید اعتبار: چک روزانه"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_res_partner__credit_due_days
+#: model:ir.model.fields,field_description:sale_voucher.field_res_users__credit_due_days
+msgid "Credit Due Days"
+msgstr "تاریخ سررسید اعتبار"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_res_partner__credit_limit
+#: model:ir.model.fields,field_description:sale_voucher.field_res_users__credit_limit
+msgid "Credit Limit"
+msgstr "حد اعتبار"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.view_res_partner_form_inherited
+msgid "Credit Payment terms"
+msgstr "شرایط پرداخت اعتباری"
+
+#. module: sale_voucher
+#: model:ir.model,name:sale_voucher.model_credit_transaction
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_order__credit_transaction_id
+msgid "Credit Transaction"
+msgstr "معامله اعتباری"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_res_partner__credit_warn_days
+#: model:ir.model.fields,field_description:sale_voucher.field_res_users__credit_warn_days
+msgid "Credit Warn Days"
+msgstr "روزهای هشدار اعتباری"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.res_config_settings_view_form_credit_alert
+msgid "Credit management"
+msgstr "مدیریت اعتبار"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__currency_id
+msgid "Currency"
+msgstr "ارز"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__display_name
+#: model:ir.model.fields,field_description:sale_voucher.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:sale_voucher.field_res_partner__display_name
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_order__display_name
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__display_name
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher_line__display_name
+msgid "Display Name"
+msgstr "نام نمایشی"
+
+#. module: sale_voucher
+#: model:ir.model.fields.selection,name:sale_voucher.selection__credit_transaction__state__draft
+msgid "Draft"
+msgstr "پیش نویس"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_order__due_date
+msgid "Due Date"
+msgstr "سررسید"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.res_config_settings_view_form_credit_alert
+msgid "Enable notifications for upcoming deadlines"
+msgstr "فعال کردن اعلان‌ها برای مهلت‌های آتی"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_follower_ids
+msgid "Followers"
+msgstr "دنبال کنندگان"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "دنبال‌کنندگان (کانال‌ها)"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "دنبال‌کنندگان (مشتریان)"
+
+#. module: sale_voucher
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__id
+#: model:ir.model.fields,field_description:sale_voucher.field_res_config_settings__id
+#: model:ir.model.fields,field_description:sale_voucher.field_res_partner__id
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_order__id
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__id
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher_line__id
+msgid "ID"
+msgstr "شناسه"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__activity_exception_icon
+msgid "Icon"
+msgstr "نماد"
+
+#. module: sale_voucher
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "نماد برای نشان دادن یک فعالیت استثنا."
+
+#. module: sale_voucher
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__message_needaction
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "اگر علامت زده شده باشد، پیام‌های جدید نیاز به توجه شما دارند."
+
+#. module: sale_voucher
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__message_has_error
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "در صورت علامت زدن، برخی از پیام‌ها خطای تحویل دارند."
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_is_follower
+msgid "Is Follower"
+msgstr "فالوور است"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction____last_update
+#: model:ir.model.fields,field_description:sale_voucher.field_res_config_settings____last_update
+#: model:ir.model.fields,field_description:sale_voucher.field_res_partner____last_update
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_order____last_update
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher____last_update
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher_line____last_update
+msgid "Last Modified on"
+msgstr "آخرین تغییر در"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__write_uid
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__write_uid
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher_line__write_uid
+msgid "Last Updated by"
+msgstr "آخرین بروزرسانی توسط"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__write_date
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__write_date
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher_line__write_date
+msgid "Last Updated on"
+msgstr "آخرین بروزرسانی در "
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "پیوست اصلی"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_has_error
+msgid "Message Delivery error"
+msgstr "خطای تحویل پیام"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_ids
+msgid "Messages"
+msgstr "پیام ها"
+
+#. module: sale_voucher
+#: code:addons/sale_voucher/models/sale_voucher.py:0
+#, python-format
+msgid "New"
+msgstr "جدید"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "مهلت فعالیت بعدی"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__activity_summary
+msgid "Next Activity Summary"
+msgstr "خلاصه فعالیت بعدی"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع فعالیت بعدی"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_needaction_counter
+msgid "Number of Actions"
+msgstr "تعداد اقدامات"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_has_error_counter
+msgid "Number of errors"
+msgstr "تعداد خطاها"
+
+#. module: sale_voucher
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "تعداد پیام‌هایی که نیاز به اقدام دارند"
+
+#. module: sale_voucher
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "تعداد پیام‌های دارای خطای تحویل"
+
+#. module: sale_voucher
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__message_unread_counter
+msgid "Number of unread messages"
+msgstr "تعداد پیام های خوانده نشده"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.res_config_settings_view_form_credit_alert
+msgid "Number of warning days"
+msgstr "تعداد روزهای هشدار"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_res_config_settings__credit_alert_days_before
+msgid "Number of warning days before due (general)"
+msgstr "تعداد روزهای هشدار قبل از موعد مقرر (کلی)"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_res_partner__open_credit_debit
+#: model:ir.model.fields,field_description:sale_voucher.field_res_users__open_credit_debit
+msgid "Open Credit Debit"
+msgstr "بدهی های اعتباری باز"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.view_order_form_add_voucher_button
+msgid "Paid"
+msgstr "پرداخت شده"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__partner_id
+msgid "Partner"
+msgstr "مشتری"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_order__payment_type
+msgid "Payment Type"
+msgstr "نوع پرداخت"
+
+#. module: sale_voucher
+#: model:ir.actions.report,name:sale_voucher.action_report_sale_voucher
+msgid "Print the sales voucher"
+msgstr "چاپ حواله فروش"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.report_salevoucher_template
+msgid "Product"
+msgstr "محصول"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__activity_user_id
+msgid "Responsible User"
+msgstr "کاربر مسئول"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "خطای تحویل پیامک"
+
+#. module: sale_voucher
+#: model:ir.model,name:sale_voucher.model_sale_voucher
+msgid "Sale Voucher"
+msgstr "حواله فروش"
+
+#. module: sale_voucher
+#: model:ir.model,name:sale_voucher.model_sale_order
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__sale_order_id
+msgid "Sales Order"
+msgstr "سفارش فروش"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__state
+msgid "State"
+msgstr "وضعیت"
+
+#. module: sale_voucher
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"وضعیت بر اساس فعالیت‌ها\n"
+"سررسیده: تاریخ سررسید قبلاً گذشته است\n"
+"امروز: تاریخ فعالیت امروز است\n"
+"برنامه‌ریزی شده: فعالیت‌های آینده."
+
+#. module: sale_voucher
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع فعالیت استثنا ثبت شده."
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_unread
+msgid "Unread Messages"
+msgstr "پیام های خوانده نشده"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "شمارنده پیام‌های خوانده نشده"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_res_config_settings__credit_alert_user_id
+#: model_terms:ir.ui.view,arch_db:sale_voucher.res_config_settings_view_form_credit_alert
+msgid "User receiving the alert"
+msgstr "کاربر دریافت کننده هشدار"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__website_message_ids
+msgid "Website Messages"
+msgstr "پیام های وب سایت"
+
+#. module: sale_voucher
+#: model:ir.model.fields,help:sale_voucher.field_sale_voucher__website_message_ids
+msgid "Website communication history"
+msgstr "تاریخچه ارتباطات وب سایت"
+
+#. module: sale_voucher
+#: model:ir.model.fields.selection,name:sale_voucher.selection__sale_voucher__state__account_approved
+msgid "account_approved"
+msgstr "حساب تأیید شده"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__amount
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher_line__quantity
+msgid "amount"
+msgstr "مقدار"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.view_sale_voucher_form
+msgid "approve account"
+msgstr "حساب تایید شده"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.view_order_form_add_voucher_button
+msgid "create sale voucher"
+msgstr "ایجاد حواله فروش"
+
+#. module: sale_voucher
+#: model:ir.actions.act_window,name:sale_voucher.action_credit_transaction
+#: model:ir.ui.menu,name:sale_voucher.menu_credit_transaction
+msgid "credit transaction"
+msgstr "معامله اعتباری"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__date
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__date
+msgid "date"
+msgstr "تاریخ"
+
+#. module: sale_voucher
+#: model:ir.model.fields.selection,name:sale_voucher.selection__sale_voucher__state__done
+#: model_terms:ir.ui.view,arch_db:sale_voucher.view_sale_voucher_form
+msgid "done"
+msgstr "انجام شد"
+
+#. module: sale_voucher
+#: model:ir.model.fields.selection,name:sale_voucher.selection__sale_voucher__state__draft
+msgid "draft"
+msgstr "پیش نویس"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_credit_transaction__note
+msgid "note"
+msgstr "یادداشت"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__partner_id
+msgid "partner"
+msgstr "مشتری"
+
+#. module: sale_voucher
+#: model:ir.model.fields.selection,name:sale_voucher.selection__credit_transaction__state__posted
+msgid "posted"
+msgstr "ارسال شده است"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher_line__product_id
+msgid "product"
+msgstr "محصول"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__voucher_line_ids
+#: model_terms:ir.ui.view,arch_db:sale_voucher.view_sale_voucher_form
+msgid "products"
+msgstr "محصولات"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__sale_order_id
+msgid "sale order"
+msgstr "سفارش فروش"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_order__voucher_id
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher_line__voucher_id
+#: model_terms:ir.ui.view,arch_db:sale_voucher.view_order_form_add_voucher_button
+msgid "sale voucher"
+msgstr "حواله فروش"
+
+#. module: sale_voucher
+#: model_terms:ir.ui.view,arch_db:sale_voucher.report_salevoucher_template
+msgid "sale voucher ID:"
+msgstr "شماره ی حواله فروش"
+
+#. module: sale_voucher
+#: model:ir.model,name:sale_voucher.model_sale_voucher_line
+msgid "sale voucher line or items"
+msgstr "ردیف یا اقلام کوپن فروش"
+
+#. module: sale_voucher
+#: model:ir.actions.act_window,name:sale_voucher.action_sale_voucher
+#: model:ir.ui.menu,name:sale_voucher.menu_sale_vouchers
+msgid "sale vouchers"
+msgstr "حواله های فروش"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__state
+msgid "state"
+msgstr "وضعیت"
+
+#. module: sale_voucher
+#: model_terms:ir.actions.act_window,help:sale_voucher.action_credit_transaction
+msgid "there are no credit transaction yet.!"
+msgstr "هنوز هیچ تراکنش اعتباری انجام نشده است!"
+
+#. module: sale_voucher
+#: model:ir.model.fields,field_description:sale_voucher.field_sale_voucher__name
+msgid "voucher id"
+msgstr "شناسه کوپن"
