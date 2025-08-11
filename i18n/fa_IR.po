@@ -119,7 +119,7 @@ msgstr "تولید شده در"
 #. module: sale_voucher
 #: model:ir.model.fields.selection,name:sale_voucher.selection__sale_order__payment_type__credit
 msgid "Credit"
-msgstr "اعتبار"
+msgstr "اعتباری"
 
 #. module: sale_voucher
 #: model:ir.actions.server,name:sale_voucher.ir_cron_check_credit_due_dates_ir_actions_server
