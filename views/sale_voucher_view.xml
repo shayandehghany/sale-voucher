@@ -7,8 +7,10 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_approve_account" string="approve account" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
-                    <button name="action_done" string="done" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'account_approved')]}"/>
+                    <button name="action_approve_account" string="approve account" type="object" class="btn-primary"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_done" string="done" type="object" class="btn-primary"
+                            attrs="{'invisible': [('state', '!=', 'account_approved')]}"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,account_approved,done"/>
                 </header>
                 <sheet>
@@ -52,12 +54,29 @@
         <field name="model">sale.voucher</field>
         <field name="arch" type="xml">
             <tree multi_edit="1">
-                <field name="name" />
+                <field name="name"/>
                 <field name="partner_id"/>
                 <field name="date"/>
                 <field name="sale_order_id"/>
                 <field name="state"/>
             </tree>
+        </field>
+    </record>
+
+    <record id="sale_voucher_search" model="ir.ui.view">
+        <field name="name">sale.voucher.search</field>
+        <field name="model">sale.voucher</field>
+        <field name="arch" type="xml">
+            <search string="sale voucher">
+                <field name="name"/>
+                <separator/>
+                <group expand="1" string="Group By">
+                    <filter string="date" name="date" domain="[]" context="{'group_by':'date'}"/>
+
+                </group>
+
+
+            </search>
         </field>
     </record>
 
