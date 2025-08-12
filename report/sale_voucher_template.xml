@@ -43,11 +43,11 @@
                             </div>
                             <div class="col-4 text-center">
                                 <strong>Open debit</strong>
-                                <p t-field="doc.partner_id.open_credit_debit" t-options='{"widget": "monetary", "display_currency": doc.sale_order_id.currency_id}'/>
+                                <p t-field="doc.sale_order_id.open_credit_debit" t-options='{"widget": "monetary", "display_currency": doc.sale_order_id.currency_id}'/>
                             </div>
                             <div class="col-4 text-center">
                                 <strong>Remaining credit</strong>
-                                <p><t t-esc="doc.partner_id.credit_limit - doc.partner_id.open_credit_debit" t-options='{"widget": "monetary", "display_currency": doc.sale_order_id.currency_id}'/></p>
+                                <p><t t-esc="doc.partner_id.credit_limit - doc.sale_order_id.open_credit_debit" t-options='{"widget": "monetary", "display_currency": doc.sale_order_id.currency_id}'/></p>
                             </div>
                         </div>
                     </div>

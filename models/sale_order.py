@@ -13,6 +13,13 @@ class SaleOrder(models.Model):
     due_date = fields.Datetime(string='Due Date',default=lambda self: fields.Datetime.now() + timedelta(days=30))
     voucher_id = fields.Many2one('sale.voucher', string='sale voucher', readonly=True, copy=False)
 
+    open_credit_debit = fields.Monetary(
+        string='Open Debit at Confirmation',
+        readonly=True,
+        copy=False,
+        help="The total open debit the customer had at the moment this order was confirmed."
+    )
+
     def action_cancel(self):
         for order in self:
             if order.credit_transaction_id:
@@ -22,11 +29,15 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         for order in self:
             if order.payment_type == 'credit':
-
-                # total_open_credit = credit_transaction.search(
-                #     [('state', '=', 'draft'), ('partner_id', '=', self.partner_id.id)])
-                total_open_credit_amount = order.partner_id.open_credit_debit
+                credit_transaction=self.env['credit.transaction']
+                open_credit_transaction = credit_transaction.search(
+                    [('state', '=', 'draft'), ('partner_id', '=', self.partner_id.id)])
+                total_open_credit_amount = sum(open_credit_transaction.mapped('amount'))
                 partner_credit_limit = order.partner_id.credit_limit
+
+                order.open_credit_debit = total_open_credit_amount
+
+
 
                 if total_open_credit_amount + order.amount_total >= partner_credit_limit:
                     raise ValidationError(_(
@@ -36,7 +47,7 @@ class SaleOrder(models.Model):
                         f"Total new debt: {total_open_credit_amount + order.amount_total:,.0f} {order.currency_id.symbol}"
                     ))
 
-                order.credit_transaction_id = self.env['credit.transaction'].create({
+                order.credit_transaction_id = credit_transaction.create({
                     'partner_id': order.partner_id.id,
                     'sale_order_id': order.id,
                     'amount': order.amount_total,
