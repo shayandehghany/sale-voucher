@@ -14,11 +14,19 @@ class SaleOrder(models.Model):
     voucher_id = fields.Many2one('sale.voucher', string='sale voucher', readonly=True, copy=False)
 
     open_credit_debit = fields.Monetary(
-        string='Open Debit at Confirmation',
-        readonly=True,
-        copy=False,
-        help="The total open debit the customer had at the moment this order was confirmed."
+        string="Open Credit Debit",
+        compute='_compute_total_open_credit_amount',
+
     )
+
+    def _compute_total_open_credit_amount(self):
+        credit_transaction = self.env['credit.transaction']
+        for order in self:
+            total_open_credit = credit_transaction.search([
+                ('state', '=', 'draft'),
+                ('partner_id', '=',  self.partner_id.id)
+            ])
+            order.open_credit_debit = sum(total_open_credit.mapped('amount'))
 
     def action_cancel(self):
         for order in self:
@@ -29,10 +37,8 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         for order in self:
             if order.payment_type == 'credit':
-                credit_transaction=self.env['credit.transaction']
-                open_credit_transaction = credit_transaction.search(
-                    [('state', '=', 'draft'), ('partner_id', '=', self.partner_id.id)])
-                total_open_credit_amount = sum(open_credit_transaction.mapped('amount'))
+
+                total_open_credit_amount = order.open_credit_debit
                 partner_credit_limit = order.partner_id.credit_limit
 
                 order.open_credit_debit = total_open_credit_amount
@@ -47,7 +53,7 @@ class SaleOrder(models.Model):
                         f"Total new debt: {total_open_credit_amount + order.amount_total:,.0f} {order.currency_id.symbol}"
                     ))
 
-                order.credit_transaction_id = credit_transaction.create({
+                order.credit_transaction_id = self.env['credit.transaction'].create({
                     'partner_id': order.partner_id.id,
                     'sale_order_id': order.id,
                     'amount': order.amount_total,
