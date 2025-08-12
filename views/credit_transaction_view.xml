@@ -5,7 +5,7 @@
         <field name="name">credit.transaction.tree</field>
         <field name="model">credit.transaction</field>
         <field name="arch" type="xml">
-            <tree create="0" edit="0" delete="0">
+            <tree create="0" edit="0" delete="0" multi_edit="1">
                 <field name="partner_id" optional="show"/>
                 <field name="date" optional="show"/>
                 <field name="sale_order_id" optional="show"/>

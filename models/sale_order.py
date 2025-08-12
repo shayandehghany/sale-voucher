@@ -10,7 +10,7 @@ class SaleOrder(models.Model):
                                     required=True)
     credit_transaction_id = fields.Many2one('credit.transaction', string='Credit Transaction', readonly=True,
                                             copy=False)
-    due_date = fields.Datetime(string='Due Date', default=fields.Datetime.now)
+    due_date = fields.Datetime(string='Due Date',default=lambda self: fields.Datetime.now() + timedelta(days=30))
     voucher_id = fields.Many2one('sale.voucher', string='sale voucher', readonly=True, copy=False)
 
     def action_cancel(self):
@@ -22,7 +22,7 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         for order in self:
             if order.payment_type == 'credit':
-                credit_transaction = self.env['credit.transaction']
+
                 # total_open_credit = credit_transaction.search(
                 #     [('state', '=', 'draft'), ('partner_id', '=', self.partner_id.id)])
                 total_open_credit_amount = order.partner_id.open_credit_debit
@@ -36,7 +36,7 @@ class SaleOrder(models.Model):
                         f"Total new debt: {total_open_credit_amount + order.amount_total:,.0f} {order.currency_id.symbol}"
                     ))
 
-                order.credit_transaction_id = credit_transaction.create({
+                order.credit_transaction_id = self.env['credit.transaction'].create({
                     'partner_id': order.partner_id.id,
                     'sale_order_id': order.id,
                     'amount': order.amount_total,
