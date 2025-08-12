@@ -54,11 +54,11 @@
         <field name="model">sale.voucher</field>
         <field name="arch" type="xml">
             <tree multi_edit="1">
-                <field name="name"/>
-                <field name="partner_id"/>
-                <field name="date"/>
-                <field name="sale_order_id"/>
-                <field name="state"/>
+                <field name="name" optional="show"/>
+                <field name="partner_id" optional="show"/>
+                <field name="date" optional="show"/>
+                <field name="sale_order_id" optional="show"/>
+                <field name="state" optional="show"/>
             </tree>
         </field>
     </record>

@@ -9,7 +9,7 @@
                 <field name="partner_id" optional="show"/>
                 <field name="date" optional="show"/>
                 <field name="sale_order_id" optional="show"/>
-                <field name="currency_id" invisible="1" optional="hide"/>
+                <field name="currency_id" optional="hide"/>
                 <field name="state" optional="show"/>
                 <field name="note" optional="show"/>
                 <field name="amount" optional="show"/>
